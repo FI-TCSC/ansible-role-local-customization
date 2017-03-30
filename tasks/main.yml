@@ -57,7 +57,7 @@
 #  setup: filter=ansible_local
 
 - name: Add local modulepath to /etc/profile.d
-  tags: local
+  tags: local,module
   when: inventory_hostname in groups.compute
   copy: src=files/tut-modules.sh dest=/etc/profile.d/tut-modules.sh
 
