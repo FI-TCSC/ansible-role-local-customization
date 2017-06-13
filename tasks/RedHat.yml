@@ -15,13 +15,13 @@
   tags: local,packages
   yum: name=zsh state=installed
 
-- name: Add local Mellanox-repo
-  tags: ib
-  yum_repository:
-    name: local-mellanox 
-    description: Mellanox IB-stack repo
-    #baseurl: file:///home/Mellanox-repo/RPMS
-    baseurl: "http://{{ kickstart_server_ip }}/Mellanox-repo/{{ ansible_distribution_major_version }}"
-    gpgcheck: no
-  when: rdma_type is defined and rdma_type == "mlnx_ofed"
+#- name: Add local Mellanox-repo
+#  tags: ib
+#  yum_repository:
+#    name: local-mellanox 
+#    description: Mellanox IB-stack repo
+#    #baseurl: file:///home/Mellanox-repo/RPMS
+#    baseurl: "http://{{ kickstart_server_ip }}/Mellanox-repo/{{ ansible_distribution_major_version }}"
+#    gpgcheck: no
+#  when: rdma_type is defined and rdma_type == "mlnx_ofed"
 
