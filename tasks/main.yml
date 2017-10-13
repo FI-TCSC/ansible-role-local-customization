@@ -46,7 +46,6 @@
 #  template: src=hosts.local.j2 dest=/etc/hosts.local owner=root group=admin mode=0644
 #  with_items: groups.compute
 
-
 #- name: create directory for ansible custom facts
 #  file: state=directory recurse=yes path=/etc/ansible/facts.d
 
@@ -60,5 +59,10 @@
   tags: local,module
   when: inventory_hostname in groups.compute
   copy: src=files/tut-modules.sh dest=/etc/profile.d/tut-modules.sh
+  
+- name: Add local Bash settings
+  tags: local,bash
+  when: (inventory_hostname in groups.compute) or (inventory_hostname in groups.login)
+  copy: src=files/tut-bash.sh dest=/etc/profile.d/tut-bash.sh
 
 
