@@ -26,7 +26,7 @@
   when: (inventory_hostname in groups.compute or inventory_hostname in groups.login)
 
 # install some "missing" packages
-- include: RedHat.yml
+- include_tasks: RedHat.yml
   when: ansible_os_family == 'RedHat'
 
 #- include: Debian.yml
