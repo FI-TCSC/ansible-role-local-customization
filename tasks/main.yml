@@ -65,4 +65,8 @@
   when: (inventory_hostname in groups.compute) or (inventory_hostname in groups.login)
   copy: src=files/tut-bash.sh dest=/etc/profile.d/tut-bash.sh
 
+- name: Add carina rootkey to ca-nodes authorized_Keys
+  tags: local,ssh
+  when: "'carina_g' in group_names"
+  authorized_key: user=root key="{{ lookup('file', 'files/carina.pub') }}"
 
