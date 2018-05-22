@@ -15,6 +15,27 @@
   tags: local,packages
   yum: name=zsh state=installed
 
+- name: package smbios fixes in base repo
+  tags: yum,fixes
+  yum_repository:
+    name: base
+    file: CentOS-Base
+    description: "CentOS-$releasever - Base"
+    mirrorlist: "http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra"
+    exclude: "*smbios*"
+    gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7"
+    gpgcheck: true
+
+- name: package smbios fixes in updates repo
+  tags: yum,fixes
+  yum_repository:
+    name: updates
+    file: CentOS-Base
+    description: "CentOS-$releasever - Updates"
+    mirrorlist: "http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra"
+    exclude: "*smbios*"
+    gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7"
+    gpgcheck: true
 #- name: Add local Mellanox-repo
 #  tags: ib
 #  yum_repository:
