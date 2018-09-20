@@ -63,7 +63,7 @@
 - name: Add local Bash settings
   tags: local,bash
   when: (inventory_hostname in groups.compute) or (inventory_hostname in groups.login)
-  copy: src=files/tut-bash.sh dest=/etc/profile.d/tut-bash.sh
+  copy: src=files/tut-bash.sh dest=/etc/profile.d/tut-bash.sh backup=yes
 
 - name: Add carina rootkey to ca-nodes authorized_Keys
   tags: local,ssh
