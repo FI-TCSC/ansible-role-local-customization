@@ -70,3 +70,14 @@
   when: "'carina_g' in group_names"
   authorized_key: user=root key="{{ lookup('file', 'files/carina.pub') }}"
 
+- name: Copy sshd hostkey when preserved.
+  tags: local,host-keys
+  copy: src=files/nodes/{{ inventory_hostname }}/ssh/ssh_host_ed25519_key dest=/etc/ssh/ssh_host_ed25519_key
+  when: preserve_hostkey == true
+  notify: Restart sshd
+
+- name: Copy sshd hostkey.pub when preserved.
+  tags: local,host-keys
+  copy: src=files/nodes/{{ inventory_hostname }}/ssh/ssh_host_ed25519_key.pub dest=/etc/ssh/ssh_host_ed25519_key.pub
+  when: preserve_hostkey == true
+  notify: Restart sshd
