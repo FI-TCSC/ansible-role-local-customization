@@ -1,2 +1,3 @@
 ---
 tmp_clean_interval: 30d
+preserve_hostkey: False
