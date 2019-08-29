@@ -57,7 +57,7 @@
 
 - name: Add local modulepath to /etc/profile.d
   tags: local,module
-  when: inventory_hostname in groups.compute
+  when: inventory_hostname in groups.compute or inventory_hostname in groups.login
   template: src=tut-modules.sh dest=/etc/profile.d/tut-modules.sh owner=root group=admin mode=664
   #copy: src=files/tut-modules.sh dest=/etc/profile.d/tut-modules.sh
   
