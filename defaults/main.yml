@@ -1,3 +1,4 @@
 ---
 tmp_clean_interval: 30d
 preserve_hostkey: False
+local_module_path: "/home/opt/modules/all:/home/opt/modules"
