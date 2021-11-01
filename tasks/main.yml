@@ -17,14 +17,6 @@
      state=present
      regexp='.*LC_CTYPE=.*'
 
-- name: Let's check that /scratch is world-writable
-  tags: mount
-  file: 
-    path: "/scratch"
-    mode: 1777
-    state: directory
-  when: (inventory_hostname in groups.compute or inventory_hostname in groups.login)
-
 # install some "missing" packages
 - import_tasks: RedHat.yml
   when: ansible_os_family == 'RedHat'
