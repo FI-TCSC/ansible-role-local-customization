@@ -73,3 +73,9 @@
   copy: src=files/nodes/{{ inventory_hostname }}/ssh/ssh_host_ed25519_key.pub dest=/etc/ssh/ssh_host_ed25519_key.pub
   when: preserve_hostkey == true
   notify: Restart sshd
+
+- name: add sudoers rule for poweruser to allow slurm suspend and resume
+  tags: local,poweruser
+  template: src=sudo_poweruser dest=/etc/sudoers.d/sudo_poweruser owner=root group=root mode=0640
+  when: inventory_hostname in groups.compute
+

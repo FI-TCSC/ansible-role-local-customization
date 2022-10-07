@@ -1,0 +1,2 @@
+# {{ ansible_managed }}
+poweruser ALL=NOPASSWD: /usr/bin/systemctl poweroff,/usr/bin/systemctl halt,/usr/bin/systemctl reboot
