@@ -7,3 +7,4 @@ export PROJ="/lustre"
 export NVME="/lustre/nvme"
 export SING_FLAGS=' -B /scratch:/scratch '
 
+export XDG_CACHE_HOME=/run/cache
